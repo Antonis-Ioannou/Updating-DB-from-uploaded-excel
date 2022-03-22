@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updating DB from uploaded excel", "Updating DB from uploaded excel.csproj", "{FE68C39B-4A71-4604-A821-91B90C2262AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE68C39B-4A71-4604-A821-91B90C2262AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE68C39B-4A71-4604-A821-91B90C2262AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE68C39B-4A71-4604-A821-91B90C2262AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE68C39B-4A71-4604-A821-91B90C2262AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E289F9BE-811F-499A-8FD6-8EDC9B517621}
+	EndGlobalSection
+EndGlobal
