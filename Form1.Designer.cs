@@ -247,6 +247,7 @@ namespace Updating_DB_from_uploaded_excel
             this.Name = "Form1";
             this.Ribbon = this.ribbonControl1;
             this.Text = "Update from Excel";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).EndInit();
             this.backstageViewControl1.ResumeLayout(false);
