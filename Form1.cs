@@ -52,23 +52,10 @@ namespace Updating_DB_from_uploaded_excel
                 }
                 catch (Exception e)
                 {
-                    //XtraMessageBox.Show(e.Message.ToString());
+
                 }
             }
         }
-
-        //private void Form1_Load(object sender, EventArgs e)
-        //{
-        //    XmlSerializer xmlSerializer = new XmlSerializer(typeof(userSettings));
-
-        //    if (!Directory.Exists(path))
-        //        Directory.CreateDirectory(path);
-
-        //    using (FileStream fs = new FileStream(path + "\\appSettings.xml", FileMode.OpenOrCreate, FileAccess.Read, FileShare.Read))
-        //    {
-        //        userSettings = (userSettings)xmlSerializer.Deserialize(fs);
-        //    }
-        //}
 
         private void btnUpdate(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -76,12 +63,6 @@ namespace Updating_DB_from_uploaded_excel
             {
                 SplashScreenManager.ShowForm(typeof(WaitForm1));
                 string query = string.Empty;
-                DateTime crtnDay = new DateTime();
-                int tpId;
-                int rcvrId;
-                int cllcntctId;
-                string nts = string.Empty;
-                DateTime mdfDate = new DateTime();
 
                 Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
                 Microsoft.Office.Interop.Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(btnChooseFIle.Text.ToString());
@@ -122,7 +103,6 @@ namespace Updating_DB_from_uploaded_excel
                             command.ExecuteNonQuery();
                         }
                     }
-
                 }
 
                 //cleanup
