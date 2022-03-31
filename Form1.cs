@@ -100,21 +100,16 @@ namespace Updating_DB_from_uploaded_excel
                     {
                         if (i > 1)
                         {
-                                    //DateTime dateTime = Convert.ToDateTime(myvalues.GetValue(i, 2));
-                                    //string s = myvalues.GetValue(i, 2).ToString();
-                                    //var dateTime = DateTime.ParseExact(s,"dd/MM/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-                                    //CONVERT(datetime, convert(char(8), myvalues.GetValue(i, 2)))
+                            DateTime creationDay = Convert.ToDateTime(myvalues.GetValue(i, 2));
+                            string cDay = creationDay.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
-                                    //query = "insert into Calls (CreationDate,TypeId,ReceiverId,CallContactId,Notes,ModifiedDate) Values ("+ myvalues.GetValue(i, 2) + ","+myvalues.GetValue(i, 3)+","+myvalues.GetValue(i, 4)+","+myvalues.GetValue(i, 5)+",'"+myvalues.GetValue(i, 6)+"',"+myvalues.GetValue(i, 7)+")";
-                                    query = "insert into Calls (TypeId,ReceiverId,CallContactId,Notes) Values (" + myvalues.GetValue(i, 3)+","+myvalues.GetValue(i, 4)+","+myvalues.GetValue(i, 5)+",'"+myvalues.GetValue(i, 6)+ "')";
-                                    SqlCommand command = new SqlCommand(query);
-                                    command.Connection = sqlConnection;
-                                    command.ExecuteNonQuery();
-                                    //--- epilogi stilis apo Calls ---//
-                                    //query = "select CreationDate,TypeId,RecieverId,CallContactId,Notes,ModifiedDate from Calls where CallsId = '" + myvalues.GetValue(i, 1) + "'";
-                                    //SqlCommand command = new SqlCommand(query);
-                                    //command.Connection = sqlConnection;
-                                    //command.ExecuteNonQuery();\
+                            DateTime modifiedDay = Convert.ToDateTime(myvalues.GetValue(i, 2));
+                            string mDay = modifiedDay.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+                            query = "insert into Calls (CreationDate,TypeId,ReceiverId,CallContactId,Notes,ModifiedDate) Values ('" + cDay + "'," + myvalues.GetValue(i, 3)+","+myvalues.GetValue(i, 4)+","+myvalues.GetValue(i, 5)+",'"+myvalues.GetValue(i, 6)+ "','" + mDay + "')";
+                            SqlCommand command = new SqlCommand(query);
+                            command.Connection = sqlConnection;
+                            command.ExecuteNonQuery();
                         }
                     }
 
