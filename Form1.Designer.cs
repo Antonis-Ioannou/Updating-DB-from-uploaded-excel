@@ -203,6 +203,7 @@ namespace Updating_DB_from_uploaded_excel
             this.btnChooseFIle.Size = new System.Drawing.Size(1268, 20);
             this.btnChooseFIle.StyleController = this.layoutControl1;
             this.btnChooseFIle.TabIndex = 2;
+            this.btnChooseFIle.Click += new System.EventHandler(this.btnChooseFile_Click);
             // 
             // Root
             // 
@@ -247,7 +248,6 @@ namespace Updating_DB_from_uploaded_excel
             this.Name = "Form1";
             this.Ribbon = this.ribbonControl1;
             this.Text = "Update from Excel";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).EndInit();
             this.backstageViewControl1.ResumeLayout(false);

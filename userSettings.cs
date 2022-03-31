@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Updating_DB_from_uploaded_excel
 {
-    class userSettings
+    public class userSettings
     {
         public string skin;
         public string palette;

@@ -13,6 +13,7 @@ using DevExpress.XtraSplashScreen;
 using System.Data.SqlClient;
 using System.Xml.Serialization;
 using System.IO;
+using System.Globalization;
 
 namespace Updating_DB_from_uploaded_excel
 {
@@ -99,29 +100,21 @@ namespace Updating_DB_from_uploaded_excel
                     {
                         if (i > 1)
                         {
-                            for (int j = 1; j <= xlRange.Columns.Count; j++)
-                            {
-                                if (j > 1)
-                                {
-                                    //--- epilogi stilis apo Calls ---//
-                                    query = "select CreationDate,TypeId,RecieverId,CallContactId,Notes,ModifiedDate from Calls where CallsId = '" + myvalues.GetValue(i, 1) + "'";
+                                    //DateTime dateTime = Convert.ToDateTime(myvalues.GetValue(i, 2));
+                                    //string s = myvalues.GetValue(i, 2).ToString();
+                                    //var dateTime = DateTime.ParseExact(s,"dd/MM/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                                    //CONVERT(datetime, convert(char(8), myvalues.GetValue(i, 2)))
+
+                                    //query = "insert into Calls (CreationDate,TypeId,ReceiverId,CallContactId,Notes,ModifiedDate) Values ("+ myvalues.GetValue(i, 2) + ","+myvalues.GetValue(i, 3)+","+myvalues.GetValue(i, 4)+","+myvalues.GetValue(i, 5)+",'"+myvalues.GetValue(i, 6)+"',"+myvalues.GetValue(i, 7)+")";
+                                    query = "insert into Calls (TypeId,ReceiverId,CallContactId,Notes) Values (" + myvalues.GetValue(i, 3)+","+myvalues.GetValue(i, 4)+","+myvalues.GetValue(i, 5)+",'"+myvalues.GetValue(i, 6)+ "')";
                                     SqlCommand command = new SqlCommand(query);
                                     command.Connection = sqlConnection;
-                                    SqlDataReader reader = command.ExecuteReader();
-                                    while (reader.Read())
-                                    {
-                                        crtnDay = (DateTime)reader["CreationDate"];
-                                        tpId = (int)reader["TypeId"];
-                                        rcvrId = (int)reader["RecieverId"];
-                                        cllcntctId = (int)reader["CallContactId"];
-                                        nts = reader["Notes"].ToString();
-                                        mdfDate = (DateTime)reader["ModifiedDate"];
-                                    }
-                                    reader.Close();
-
-
-                                }
-                            }
+                                    command.ExecuteNonQuery();
+                                    //--- epilogi stilis apo Calls ---//
+                                    //query = "select CreationDate,TypeId,RecieverId,CallContactId,Notes,ModifiedDate from Calls where CallsId = '" + myvalues.GetValue(i, 1) + "'";
+                                    //SqlCommand command = new SqlCommand(query);
+                                    //command.Connection = sqlConnection;
+                                    //command.ExecuteNonQuery();\
                         }
                     }
 
@@ -150,6 +143,26 @@ namespace Updating_DB_from_uploaded_excel
             else
             {
                 XtraMessageBox.Show("Επιλέξτε αρχείο");
+            }
+        }
+
+        private void btnChooseFile_Click(object sender, EventArgs e)
+        {
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+                    btnChooseFIle.Text = filePath;
+                }
             }
         }
     }
