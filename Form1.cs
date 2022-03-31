@@ -100,9 +100,11 @@ namespace Updating_DB_from_uploaded_excel
                     {
                         if (i > 1)
                         {
+                            //---creation day---//
                             DateTime creationDay = Convert.ToDateTime(myvalues.GetValue(i, 2));
                             string cDay = creationDay.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
+                            //---modified day---//
                             DateTime modifiedDay = Convert.ToDateTime(myvalues.GetValue(i, 2));
                             string mDay = modifiedDay.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
