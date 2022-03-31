@@ -108,7 +108,15 @@ namespace Updating_DB_from_uploaded_excel
                             DateTime modifiedDay = Convert.ToDateTime(myvalues.GetValue(i, 2));
                             string mDay = modifiedDay.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
-                            query = "insert into Calls (CreationDate,TypeId,ReceiverId,CallContactId,Notes,ModifiedDate) Values ('" + cDay + "'," + myvalues.GetValue(i, 3)+","+myvalues.GetValue(i, 4)+","+myvalues.GetValue(i, 5)+",'"+myvalues.GetValue(i, 6)+ "','" + mDay + "')";
+                            if (!toggleForInsertOrUpdate.Checked)
+                            {
+                                query = "insert into Calls (CreationDate,TypeId,ReceiverId,CallContactId,Notes,ModifiedDate) Values ('"+cDay +"',"+ myvalues.GetValue(i, 3)+","+myvalues.GetValue(i, 4)+","+myvalues.GetValue(i, 5)+",'"+myvalues.GetValue(i, 6)+"','"+mDay+"')";
+                            }
+                            else
+                            {
+                                query = "update Calls SET CreationDate = '"+cDay+ "', TypeId = "+myvalues.GetValue(i, 3)+ ", ReceiverId = "+myvalues.GetValue(i, 4)+ ", CallContactId = "+myvalues.GetValue(i, 5)+ ", Notes = '"+myvalues.GetValue(i, 6)+"', ModifiedDate = '" + mDay+"' WHERE CallsId = "+myvalues.GetValue(i, 1)+"";
+                            }
+                            
                             SqlCommand command = new SqlCommand(query);
                             command.Connection = sqlConnection;
                             command.ExecuteNonQuery();

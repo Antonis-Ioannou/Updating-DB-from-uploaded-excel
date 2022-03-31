@@ -49,6 +49,7 @@ namespace Updating_DB_from_uploaded_excel
             this.ChooseFile = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Updating_DB_from_uploaded_excel.WaitForm1), true, true);
+            this.toggleForInsertOrUpdate = new DevExpress.XtraBars.BarToggleSwitchItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
             this.backstageViewControl1.SuspendLayout();
@@ -70,9 +71,10 @@ namespace Updating_DB_from_uploaded_excel
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.ribbonControl1.SearchEditItem,
-            this.btnSaveFile});
+            this.btnSaveFile,
+            this.toggleForInsertOrUpdate});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 2;
+            this.ribbonControl1.MaxItemId = 4;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -84,12 +86,12 @@ namespace Updating_DB_from_uploaded_excel
             this.backstageViewControl1.Controls.Add(this.backstageViewClientControl2);
             this.backstageViewControl1.Items.Add(this.backstageViewTabItem1);
             this.backstageViewControl1.Items.Add(this.backstageViewTabItem2);
-            this.backstageViewControl1.Location = new System.Drawing.Point(203, 82);
+            this.backstageViewControl1.Location = new System.Drawing.Point(711, 77);
             this.backstageViewControl1.Name = "backstageViewControl1";
             this.backstageViewControl1.OwnerControl = this.ribbonControl1;
             this.backstageViewControl1.SelectedTab = this.backstageViewTabItem1;
             this.backstageViewControl1.SelectedTabIndex = 0;
-            this.backstageViewControl1.Size = new System.Drawing.Size(884, 413);
+            this.backstageViewControl1.Size = new System.Drawing.Size(593, 357);
             this.backstageViewControl1.TabIndex = 2;
             this.backstageViewControl1.VisibleInDesignTime = true;
             // 
@@ -101,7 +103,7 @@ namespace Updating_DB_from_uploaded_excel
             this.backstageViewClientControl1.Controls.Add(this.comboBoxEdit1);
             this.backstageViewClientControl1.Location = new System.Drawing.Point(195, 63);
             this.backstageViewClientControl1.Name = "backstageViewClientControl1";
-            this.backstageViewClientControl1.Size = new System.Drawing.Size(688, 349);
+            this.backstageViewClientControl1.Size = new System.Drawing.Size(397, 293);
             this.backstageViewClientControl1.TabIndex = 1;
             // 
             // labelControl2
@@ -142,9 +144,9 @@ namespace Updating_DB_from_uploaded_excel
             // 
             // backstageViewClientControl2
             // 
-            this.backstageViewClientControl2.Location = new System.Drawing.Point(195, 62);
+            this.backstageViewClientControl2.Location = new System.Drawing.Point(195, 63);
             this.backstageViewClientControl2.Name = "backstageViewClientControl2";
-            this.backstageViewClientControl2.Size = new System.Drawing.Size(689, 351);
+            this.backstageViewClientControl2.Size = new System.Drawing.Size(397, 293);
             this.backstageViewClientControl2.TabIndex = 2;
             // 
             // backstageViewTabItem1
@@ -179,8 +181,9 @@ namespace Updating_DB_from_uploaded_excel
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.btnSaveFile);
+            this.ribbonPageGroup1.ItemLinks.Add(this.toggleForInsertOrUpdate);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Data Upload";
             // 
             // layoutControl1
             // 
@@ -237,6 +240,12 @@ namespace Updating_DB_from_uploaded_excel
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // toggleForInsertOrUpdate
+            // 
+            this.toggleForInsertOrUpdate.Caption = "Insert/Update";
+            this.toggleForInsertOrUpdate.Id = 2;
+            this.toggleForInsertOrUpdate.Name = "toggleForInsertOrUpdate";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,6 +296,7 @@ namespace Updating_DB_from_uploaded_excel
         private DevExpress.XtraBars.Ribbon.BackstageViewTabItem backstageViewTabItem1;
         private DevExpress.XtraBars.Ribbon.BackstageViewTabItem backstageViewTabItem2;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraBars.BarToggleSwitchItem toggleForInsertOrUpdate;
     }
 }
 
