@@ -83,40 +83,35 @@ namespace Updating_DB_from_uploaded_excel
                     {
                         if (i > 1)
                         {
-                            //string creationDay = " ";
-                            //string modifiedDay = " ";
-
                             if (!(myvalues.GetValue(i, 3) == null || Convert.ToString(myvalues.GetValue(i, 3)) == " " || myvalues.GetValue(i, 4) == null || Convert.ToString(myvalues.GetValue(i, 4)) == " " || myvalues.GetValue(i, 5) == null || Convert.ToString(myvalues.GetValue(i, 5)) == " " || myvalues.GetValue(i, 6) == null))
                             {
                                 SqlCommand command = new SqlCommand();
-                                //---creation day---//
-                                //creationDay = (myvalues.GetValue(i, 2).ToString());
-                                //cDay = Convert.ToDateTime(creationDay);
-
-                                //---modified day---//
-                                //modifiedDay = (myvalues.GetValue(i, 7).ToString());
-                                //mDay = Convert.ToDateTime(modifiedDay);
-
                                 if (!toggleForInsertOrUpdate.Checked)
                                 {
                                     cDay = DateTime.Now.ToString("G");
-                                    //query = "insert into Calls (CreationDate,TypeId,ReceiverId,CallContactId,Notes,ModifiedDate) Values ('" + cDay + "'," + myvalues.GetValue(i, 3) + "," + myvalues.GetValue(i, 4) + "," + myvalues.GetValue(i, 5) + ",'" + myvalues.GetValue(i, 6) + "','" + cDay + "')";
                                     command = new SqlCommand("insert into Calls values(@CreationDate,@TypeId,@ReceiverId,@CallContactId,@Notes,@ModifiedDate)");
                                     command.Parameters.AddWithValue("@CreationDate", DateTime.Parse(cDay));
                                     command.Parameters.AddWithValue("@TypeId", myvalues.GetValue(i, 3));
                                     command.Parameters.AddWithValue("@ReceiverId", myvalues.GetValue(i, 4));
                                     command.Parameters.AddWithValue("@CallContactId", myvalues.GetValue(i, 5));
-                                    command.Parameters.AddWithValue("@Notes", myvalues.GetValue(i, 6));
+                                    command.Parameters.AddWithValue("@Notes", myvalues.GetValue(i, 6));  
                                     command.Parameters.AddWithValue("@ModifiedDate", DateTime.Parse(cDay));
                                     command.Connection = sqlConnection;
                                     command.ExecuteNonQuery();
                                 }
                                 else
                                 {
-                                    mDay = DateTime.Now.ToString("d");
-                                    query = "update Calls SET TypeId = " + myvalues.GetValue(i, 3) + ", ReceiverId = " + myvalues.GetValue(i, 4) + ", CallContactId = " + myvalues.GetValue(i, 5) + ", Notes = '" + myvalues.GetValue(i, 6) + "', ModifiedDate = '" + mDay + "' WHERE CallsId = " + myvalues.GetValue(i, 1) + "";
+                                    mDay = DateTime.Now.ToString("G");
+                                    command = new SqlCommand("UPDATE Calls SET TypeId=@TypeId,ReceiverId=@ReceiverId,CallContactId=@CallContactId,Notes=@Notes,ModifiedDate=@ModifiedDate WHERE CallsId=@CallsId");
+                                    command.Parameters.AddWithValue("@CallsId", myvalues.GetValue(i, 1));
+                                    command.Parameters.AddWithValue("@TypeId", myvalues.GetValue(i, 3));
+                                    command.Parameters.AddWithValue("@ReceiverId", myvalues.GetValue(i, 4));
+                                    command.Parameters.AddWithValue("@CallContactId", myvalues.GetValue(i, 5));
+                                    command.Parameters.AddWithValue("@Notes", myvalues.GetValue(i, 6));
+                                    command.Parameters.AddWithValue("@ModifiedDate", DateTime.Parse(mDay));
+                                    command.Connection = sqlConnection;
+                                    command.ExecuteNonQuery();
                                 }
-                                //SqlCommand command = new SqlCommand(query);
                             }
                         }
                     }
